@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accueil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── Navigation ───────────────────────────────────────── -->
+  <header class="nav">
+    <div class="conteneur nav__inner">
+      <a href="index.html" class="nav__logo">
+        Mon<span>Site</span>
+      </a>
+
+      <nav class="nav__liens">
+        <a href="index.html" class="nav__lien actif">Accueil</a>
+        <a href="ateliers.html" class="nav__lien">Ateliers</a>
+      </nav>
+
+      <div class="nav__actions">
+        <a href="ateliers.html" class="btn btn-primaire">Voir les ateliers</a>
+      </div>
+
+      <!-- Burger mobile -->
+      <button class="nav__burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Menu mobile -->
+  <div class="nav__mobile" id="navMobile">
+    <a href="index.html" class="nav__lien actif">Accueil</a>
+    <a href="ateliers.html" class="nav__lien">Ateliers</a>
+    <a href="ateliers.html" class="btn btn-primaire btn-plein mt-4">Voir les ateliers</a>
+  </div>
+
+  <!-- ── Hero ─────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="conteneur">
+      <div class="hero__layout">
+        <div>
+          <div class="hero__badge">✨ Bienvenue</div>
+          <h1 class="titre-hero hero__titre">
+            Bienvenue sur <span class="accent-orange">MonSite</span>
+          </h1>
+          <p class="hero__sous-titre">
+            Découvrez nos ateliers et activités. Une expérience unique vous attend.
+          </p>
+          <div class="hero__cta">
+            <a href="ateliers.html" class="btn btn-primaire btn-lg">
+              Voir les ateliers →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ───────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="conteneur">
+      <hr class="footer__separateur" />
+      <div class="footer__bas">
+        <span>© 2025 MonSite. Tous droits réservés.</span>
+        <div class="footer__mentions">
+          <a href="ateliers.html" class="footer__mention-lien">Ateliers</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Burger menu
+    const burger = document.getElementById('burger');
+    const navMobile = document.getElementById('navMobile');
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('ouvert');
+      navMobile.classList.toggle('ouvert');
+    });
+  </script>
+
+</body>
+</html>
