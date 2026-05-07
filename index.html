@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GMAO — Gestion de Maintenance Assistée par Ordinateur</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav class="nav">
+    <div class="conteneur nav__inner">
+      <a class="nav__logo" href="#">⚙️ G<span>MAO</span></a>
+      <ul class="nav__liens">
+        <li><a class="nav__lien actif" href="#">Tableau de bord</a></li>
+        <li><a class="nav__lien" href="#">Équipements</a></li>
+        <li><a class="nav__lien" href="#">Interventions</a></li>
+        <li><a class="nav__lien" href="#">Planification</a></li>
+        <li><a class="nav__lien" href="#">Rapports</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a href="#" class="btn btn-secondaire btn-sm">Connexion</a>
+        <a href="#" class="btn btn-primaire btn-sm">Nouvelle intervention</a>
+      </div>
+      <button class="nav__burger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav__mobile" id="navMobile">
+      <a class="nav__lien" href="#">Tableau de bord</a>
+      <a class="nav__lien" href="#">Équipements</a>
+      <a class="nav__lien" href="#">Interventions</a>
+      <a class="nav__lien" href="#">Planification</a>
+      <a class="nav__lien" href="#">Rapports</a>
+      <a href="#" class="btn btn-primaire btn-sm btn-plein mt-4">Nouvelle intervention</a>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <div class="conteneur">
+      <div class="hero__layout">
+        <div>
+          <span class="hero__badge">🔧 Plateforme GMAO v2.0</span>
+          <h1 class="titre-hero hero__titre animer">
+            Maintenance industrielle<br>
+            <span class="accent-orange">sous contrôle total</span>
+          </h1>
+          <p class="hero__sous-titre animer animer-1">
+            Gérez vos équipements, planifiez vos interventions et réduisez les temps d'arrêt grâce à une solution GMAO moderne et intuitive.
+          </p>
+          <div class="hero__cta animer animer-2">
+            <a href="#" class="btn btn-primaire btn-lg">Démarrer maintenant</a>
+            <a href="#" class="btn btn-fantome btn-lg">Voir la démo →</a>
+          </div>
+        </div>
+        <div class="hero__image animer animer-3">
+          <img src="https://placehold.co/560x380/0B2A4A/5AACF0?text=Tableau+de+bord+GMAO" alt="Dashboard GMAO" style="width:100%;border-radius:18px;" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Statistiques ── -->
+  <section class="section section--gris">
+    <div class="conteneur">
+      <div class="grille" style="grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));">
+        <div class="stat">
+          <div class="stat__nombre">98%</div>
+          <div class="stat__label">Disponibilité équipements</div>
+        </div>
+        <div class="stat">
+          <div class="stat__nombre">2 400</div>
+          <div class="stat__label">Interventions gérées</div>
+        </div>
+        <div class="stat">
+          <div class="stat__nombre">340</div>
+          <div class="stat__label">Équipements suivis</div>
+        </div>
+        <div class="stat">
+          <div class="stat__nombre">-35%</div>
+          <div class="stat__label">Coûts de maintenance</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Fonctionnalités ── -->
+  <section class="section">
+    <div class="conteneur">
+      <div class="section__en-tete centre">
+        <span class="label section__label">Fonctionnalités</span>
+        <h2 class="titre-1 section__titre">Tout ce dont vous avez besoin</h2>
+        <p class="sous-titre section__desc">Une solution complète pour piloter la maintenance de vos actifs industriels.</p>
+      </div>
+      <div class="grille-cartes">
+        <div class="carte carte--orange animer">
+          <div class="carte__icone carte__icone--orange">🏭</div>
+          <h3 class="carte__titre">Gestion des équipements</h3>
+          <p class="carte__texte">Centralisez toutes les informations de vos actifs : fiches techniques, historique, documentation et arborescence fonctionnelle.</p>
+        </div>
+        <div class="carte carte--bleu animer animer-1">
+          <div class="carte__icone carte__icone--bleu">🔨</div>
+          <h3 class="carte__titre">Ordres de travail</h3>
+          <p class="carte__texte">Créez, assignez et suivez les interventions correctives et préventives en temps réel depuis n'importe quel appareil.</p>
+        </div>
+        <div class="carte animer animer-2">
+          <div class="carte__icone carte__icone--orange">📅</div>
+          <h3 class="carte__titre">Maintenance préventive</h3>
+          <p class="carte__texte">Planifiez automatiquement les révisions périodiques selon des fréquences calendaires ou des compteurs d'utilisation.</p>
+        </div>
+        <div class="carte animer animer-3">
+          <div class="carte__icone carte__icone--bleu">📦</div>
+          <h3 class="carte__titre">Gestion des stocks</h3>
+          <p class="carte__texte">Suivez vos pièces de rechange, gérez les seuils d'alerte et optimisez vos approvisionnements fournisseurs.</p>
+        </div>
+        <div class="carte animer">
+          <div class="carte__icone carte__icone--orange">📊</div>
+          <h3 class="carte__titre">Tableaux de bord</h3>
+          <p class="carte__texte">Visualisez les KPIs essentiels : MTBF, MTTR, taux de disponibilité, coûts par équipement et par service.</p>
+        </div>
+        <div class="carte animer animer-1">
+          <div class="carte__icone carte__icone--bleu">📱</div>
+          <h3 class="carte__titre">Application mobile</h3>
+          <p class="carte__texte">Vos techniciens accèdent à leurs interventions, scannent les QR codes et renseignent les rapports directement sur le terrain.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Interventions récentes ── -->
+  <section class="section section--bleu-pale">
+    <div class="conteneur">
+      <div class="section__en-tete">
+        <span class="label section__label">En cours</span>
+        <h2 class="titre-1 section__titre">Interventions récentes</h2>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>N° OT</th>
+              <th>Équipement</th>
+              <th>Type</th>
+              <th>Technicien</th>
+              <th>Priorité</th>
+              <th>Statut</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>OT-2024-0412</strong></td>
+              <td>Compresseur C-01</td>
+              <td>Corrective</td>
+              <td>Martin D.</td>
+              <td><span class="tag tag--erreur">🔴 Urgente</span></td>
+              <td><span class="tag tag--alerte">En cours</span></td>
+            </tr>
+            <tr>
+              <td><strong>OT-2024-0411</strong></td>
+              <td>Pompe P-12A</td>
+              <td>Préventive</td>
+              <td>Sophie L.</td>
+              <td><span class="tag tag--alerte">🟡 Haute</span></td>
+              <td><span class="tag tag--alerte">Planifiée</span></td>
+            </tr>
+            <tr>
+              <td><strong>OT-2024-0410</strong></td>
+              <td>Convoyeur K-03</td>
+              <td>Préventive</td>
+              <td>Paul R.</td>
+              <td><span class="tag tag--bleu">🔵 Normale</span></td>
+              <td><span class="tag tag--succes">✅ Terminée</span></td>
+            </tr>
+            <tr>
+              <td><strong>OT-2024-0409</strong></td>
+              <td>Tour T-07</td>
+              <td>Corrective</td>
+              <td>Claire B.</td>
+              <td><span class="tag tag--bleu">🔵 Normale</span></td>
+              <td><span class="tag tag--succes">✅ Terminée</span></td>
+            </tr>
+            <tr>
+              <td><strong>OT-2024-0408</strong></td>
+              <td>Chaudière CH-01</td>
+              <td>Réglementaire</td>
+              <td>Marc V.</td>
+              <td><span class="tag tag--erreur">🔴 Urgente</span></td>
+              <td><span class="tag tag--alerte">En cours</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Alertes ── -->
+  <section class="section">
+    <div class="conteneur">
+      <div class="section__en-tete centre">
+        <span class="label section__label">Alertes système</span>
+        <h2 class="titre-1 section__titre">Notifications actives</h2>
+      </div>
+      <div class="flex-col gap-4" style="max-width:720px;margin:auto;">
+        <div class="alerte alerte--erreur">
+          <span>🚨</span>
+          <div><strong>Compresseur C-01 en panne</strong> — Arrêt non planifié détecté. Intervention d'urgence requise.</div>
+        </div>
+        <div class="alerte alerte--alerte">
+          <span>⚠️</span>
+          <div><strong>Stock critique — Joint torique Ø80</strong> — Seuil minimum atteint (2 unités restantes). Commande recommandée.</div>
+        </div>
+        <div class="alerte alerte--info">
+          <span>ℹ️</span>
+          <div><strong>Révision annuelle Chaudière CH-01</strong> — Échéance dans 7 jours. Planification de l'arrêt nécessaire.</div>
+        </div>
+        <div class="alerte alerte--succes">
+          <span>✅</span>
+          <div><strong>Convoyeur K-03</strong> — Maintenance préventive réalisée avec succès. Prochain entretien dans 90 jours.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Bannière CTA ── -->
+  <section class="section">
+    <div class="conteneur">
+      <div class="banniere-cta">
+        <h2 class="banniere-cta__titre">Prêt à optimiser votre maintenance ?</h2>
+        <p class="banniere-cta__desc">Rejoignez plus de 500 industriels qui font confiance à notre GMAO pour piloter leur maintenance.</p>
+        <div class="banniere-cta__actions">
+          <a href="#" class="btn btn-primaire btn-lg">Essai gratuit 30 jours</a>
+          <a href="#" class="btn btn-fantome btn-lg">Demander une démo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="conteneur">
+      <div class="grille footer__grille">
+        <div>
+          <div class="footer__logo">⚙️ G<span>MAO</span></div>
+          <p class="footer__desc">La solution de gestion de maintenance industrielle simple, puissante et accessible à toutes les tailles d'entreprise.</p>
+          <div class="footer__reseaux">
+            <a class="footer__reseau-lien" href="#" aria-label="LinkedIn">in</a>
+            <a class="footer__reseau-lien" href="#" aria-label="Twitter">𝕏</a>
+            <a class="footer__reseau-lien" href="#" aria-label="YouTube">▶</a>
+          </div>
+        </div>
+        <div>
+          <p class="footer__titre-col">Produit</p>
+          <ul class="footer__liens">
+            <li><a class="footer__lien" href="#">Fonctionnalités</a></li>
+            <li><a class="footer__lien" href="#">Tarifs</a></li>
+            <li><a class="footer__lien" href="#">Intégrations</a></li>
+            <li><a class="footer__lien" href="#">Nouveautés</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__titre-col">Support</p>
+          <ul class="footer__liens">
+            <li><a class="footer__lien" href="#">Documentation</a></li>
+            <li><a class="footer__lien" href="#">Tutoriels</a></li>
+            <li><a class="footer__lien" href="#">Communauté</a></li>
+            <li><a class="footer__lien" href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__titre-col">Entreprise</p>
+          <ul class="footer__liens">
+            <li><a class="footer__lien" href="#">À propos</a></li>
+            <li><a class="footer__lien" href="#">Blog</a></li>
+            <li><a class="footer__lien" href="#">Partenaires</a></li>
+            <li><a class="footer__lien" href="#">Recrutement</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr class="footer__separateur" />
+      <div class="footer__bas">
+        <span>© 2024 GMAO — Tous droits réservés</span>
+        <div class="footer__mentions">
+          <a class="footer__mention-lien" href="#">Confidentialité</a>
+          <a class="footer__mention-lien" href="#">CGU</a>
+          <a class="footer__mention-lien" href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const burger = document.querySelector('.nav__burger');
+      const mobile = document.getElementById('navMobile');
+      burger.classList.toggle('ouvert');
+      mobile.classList.toggle('ouvert');
+    }
+
+    // Accordéons
+    document.querySelectorAll('.accordeon__tete').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.closest('.accordeon__item').classList.toggle('ouvert');
+      });
+    });
+
+    // Onglets
+    document.querySelectorAll('.onglet-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.onglet;
+        document.querySelectorAll('.onglet-btn').forEach(b => b.classList.remove('actif'));
+        document.querySelectorAll('.onglet-contenu').forEach(c => c.classList.remove('actif'));
+        btn.classList.add('actif');
+        document.getElementById(target)?.classList.add('actif');
+      });
+    });
+  </script>
+</body>
+</html>
