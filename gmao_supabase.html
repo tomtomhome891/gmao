@@ -1,0 +1,413 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap');
+:root {
+  --orange-vif:#F46A1F;--orange-clair:#FF9A57;--orange-pale:#FFF0E6;--orange-sombre:#C44E0A;
+  --bleu-vif:#1A73C8;--bleu-clair:#5AACF0;--bleu-pale:#E8F3FB;--bleu-sombre:#0D4F8A;--bleu-nuit:#0B2A4A;
+  --blanc:#FFFFFF;--gris-clair:#F5F6F8;--gris-moyen:#C8CDD6;--gris-texte:#5A6070;--noir-doux:#1A1F2E;
+  --gradient-hero:linear-gradient(135deg,var(--bleu-nuit) 0%,var(--bleu-vif) 60%,var(--orange-vif) 100%);
+  --gradient-accent:linear-gradient(90deg,var(--orange-vif),var(--orange-clair));
+  --font-titre:'Sora','Segoe UI',sans-serif;--font-corps:'DM Sans','Helvetica Neue',Arial,sans-serif;--font-mono:'JetBrains Mono','Courier New',monospace;
+  --text-xs:.75rem;--text-sm:.875rem;--text-base:1rem;--text-lg:1.125rem;
+  --s1:.25rem;--s2:.5rem;--s3:.75rem;--s4:1rem;--s5:1.25rem;--s6:1.5rem;--s8:2rem;
+  --r-sm:4px;--r-md:10px;--r-lg:18px;--r-full:9999px;
+  --ombre-sm:0 2px 8px rgba(26,47,78,.10);--ombre-md:0 6px 24px rgba(26,47,78,.13);--ombre-lg:0 16px 48px rgba(26,47,78,.18);
+  --ombre-orange:0 8px 24px rgba(244,106,31,.30);--ombre-bleu:0 8px 24px rgba(26,115,200,.25);
+  --transition-normal:280ms cubic-bezier(.4,0,.2,1);--transition-rapide:150ms ease;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-corps);font-size:var(--text-base);color:var(--noir-doux);background:var(--gris-clair);-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:var(--font-titre);}
+button{font-family:var(--font-corps);cursor:pointer;border:none;background:none;}
+input,select{font-family:var(--font-corps);font-size:inherit;}
+
+.page{padding:var(--s6);}
+
+/* Header */
+.header{background:var(--gradient-hero);border-radius:var(--r-lg);padding:var(--s6) var(--s8);margin-bottom:var(--s5);display:flex;align-items:center;justify-content:space-between;position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;top:-40%;right:-10%;width:260px;height:260px;background:radial-gradient(circle,rgba(244,106,31,.30) 0%,transparent 70%);border-radius:50%;pointer-events:none;}
+.header__left{position:relative;z-index:1;}
+.header__badge{display:inline-flex;align-items:center;gap:var(--s2);padding:var(--s1) var(--s4);background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.30);border-radius:var(--r-full);font-size:var(--text-xs);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--orange-clair);margin-bottom:var(--s3);}
+.header__titre{font-size:var(--text-lg);font-weight:800;color:var(--blanc);letter-spacing:-.02em;}
+.header__sous{font-size:var(--text-sm);color:rgba(255,255,255,.7);margin-top:var(--s1);}
+.header__actions{display:flex;gap:var(--s3);position:relative;z-index:1;}
+
+/* Boutons */
+.btn{display:inline-flex;align-items:center;gap:var(--s2);padding:var(--s3) var(--s5);border-radius:var(--r-full);font-size:var(--text-sm);font-weight:600;transition:all var(--transition-normal);cursor:pointer;white-space:nowrap;}
+.btn-primaire{background:var(--gradient-accent);color:var(--blanc);box-shadow:var(--ombre-orange);}
+.btn-primaire:hover{transform:translateY(-2px);filter:brightness(1.08);}
+.btn-fantome{background:transparent;color:var(--blanc);border:2px solid rgba(255,255,255,.45);}
+.btn-fantome:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.8);}
+.btn-secondaire{background:var(--blanc);color:var(--bleu-vif);border:2px solid var(--bleu-vif);}
+.btn-secondaire:hover{background:var(--bleu-vif);color:var(--blanc);}
+.btn-sm{padding:var(--s2) var(--s4);font-size:var(--text-xs);}
+
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s4);margin-bottom:var(--s5);}
+.stat{background:var(--blanc);border-radius:var(--r-lg);padding:var(--s5);box-shadow:var(--ombre-sm);border:1px solid rgba(26,115,200,.08);}
+.stat__icone{width:40px;height:40px;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;margin-bottom:var(--s3);font-size:18px;}
+.stat__icone--bleu{background:var(--bleu-pale);color:var(--bleu-vif);}
+.stat__icone--vert{background:#E6F9F0;color:#1A7A4A;}
+.stat__icone--orange{background:var(--orange-pale);color:var(--orange-vif);}
+.stat__icone--rouge{background:#FDECEA;color:#9B1C1C;}
+.stat__nombre{font-family:var(--font-titre);font-size:1.75rem;font-weight:800;line-height:1;margin-bottom:var(--s1);}
+.stat__label{font-size:var(--text-xs);color:var(--gris-texte);font-weight:500;text-transform:uppercase;letter-spacing:.05em;}
+
+/* Toolbar */
+.toolbar{background:var(--blanc);border-radius:var(--r-lg);padding:var(--s4) var(--s5);box-shadow:var(--ombre-sm);border:1px solid rgba(26,115,200,.08);display:flex;gap:var(--s3);margin-bottom:var(--s4);align-items:center;flex-wrap:wrap;}
+.champ__input{padding:var(--s3) var(--s4);border:1.5px solid var(--gris-moyen);border-radius:var(--r-md);color:var(--noir-doux);font-size:var(--text-sm);outline:none;transition:all var(--transition-rapide);flex:1;min-width:180px;background:var(--blanc);}
+.champ__input:focus{border-color:var(--bleu-vif);box-shadow:0 0 0 3px rgba(26,115,200,.15);}
+.champ__input::placeholder{color:var(--gris-moyen);}
+.champ__select{padding:var(--s3) var(--s4);border:1.5px solid var(--gris-moyen);border-radius:var(--r-md);color:var(--noir-doux);font-size:var(--text-sm);outline:none;transition:all var(--transition-rapide);min-width:150px;background:var(--blanc);}
+.champ__select:focus{border-color:var(--bleu-vif);box-shadow:0 0 0 3px rgba(26,115,200,.15);}
+
+/* Table */
+.table-wrapper{background:var(--blanc);border-radius:var(--r-lg);box-shadow:var(--ombre-sm);border:1px solid rgba(26,115,200,.08);overflow:hidden;}
+table{width:100%;border-collapse:collapse;font-size:var(--text-sm);table-layout:fixed;}
+thead{background:var(--bleu-nuit);}
+thead th{padding:var(--s3) var(--s4);text-align:left;font-family:var(--font-titre);font-size:var(--text-xs);font-weight:600;color:var(--blanc);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;user-select:none;white-space:nowrap;}
+thead th:hover{background:rgba(255,255,255,.08);}
+thead th .sic{margin-left:4px;opacity:.4;font-size:9px;}
+thead th.sorted .sic{opacity:1;}
+tbody tr{border-bottom:1px solid var(--gris-clair);transition:background var(--transition-rapide);cursor:pointer;}
+tbody tr:last-child{border-bottom:none;}
+tbody tr:hover{background:var(--bleu-pale);}
+td{padding:var(--s3) var(--s4);color:var(--gris-texte);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+td.nm{color:var(--noir-doux);font-weight:600;}
+td.sr{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--bleu-sombre);}
+
+/* Tags */
+.tag{display:inline-flex;align-items:center;gap:4px;padding:var(--s1) var(--s3);border-radius:var(--r-full);font-size:var(--text-xs);font-weight:600;}
+.tag--succes{background:#E6F9F0;color:#1A7A4A;}
+.tag--info{background:var(--bleu-pale);color:var(--bleu-sombre);}
+.tag--alerte{background:var(--orange-pale);color:var(--orange-sombre);}
+.tag--erreur{background:#FDECEA;color:#9B1C1C;}
+
+/* Skeleton */
+.skeleton{background:linear-gradient(90deg,var(--gris-clair) 25%,#e8eaed 50%,var(--gris-clair) 75%);background-size:200% 100%;animation:skel 1.4s ease infinite;border-radius:var(--r-sm);}
+@keyframes skel{from{background-position:200% 0;}to{background-position:-200% 0;}}
+
+/* Alerte */
+.alerte{padding:var(--s4) var(--s5);border-radius:var(--r-md);border-left:4px solid;font-size:var(--text-sm);display:flex;align-items:center;gap:var(--s3);margin-bottom:var(--s4);}
+.alerte--erreur{background:#FDECEA;border-color:#D9534F;color:#7B1A1A;}
+
+/* Pagination */
+.pagination{display:flex;align-items:center;justify-content:space-between;padding:var(--s4) var(--s5);border-top:1px solid var(--gris-clair);}
+.pagination__info{font-size:var(--text-xs);color:var(--gris-texte);}
+.page-btn{min-width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:var(--r-md);font-size:var(--text-xs);font-weight:500;color:var(--gris-texte);border:1.5px solid var(--gris-moyen);transition:all var(--transition-rapide);cursor:pointer;background:var(--blanc);}
+.page-btn:hover:not(:disabled){border-color:var(--bleu-vif);color:var(--bleu-vif);}
+.page-btn:disabled{opacity:.35;cursor:not-allowed;}
+
+/* Modal */
+.mo-wrap{display:none;background:rgba(11,42,74,.45);border-radius:var(--r-lg);margin-top:var(--s5);min-height:480px;align-items:center;justify-content:center;padding:var(--s6);}
+.mo-wrap.open{display:flex;}
+.modal{background:var(--blanc);border-radius:var(--r-lg);box-shadow:var(--ombre-lg);width:500px;max-width:100%;border:1px solid rgba(26,115,200,.12);overflow:hidden;}
+.modal__header{background:var(--gradient-hero);padding:var(--s5) var(--s6);display:flex;align-items:center;justify-content:space-between;position:relative;overflow:hidden;}
+.modal__header::before{content:'';position:absolute;top:-50%;right:-10%;width:180px;height:180px;background:radial-gradient(circle,rgba(244,106,31,.3) 0%,transparent 70%);border-radius:50%;}
+.modal__header h2{font-family:var(--font-titre);font-size:var(--text-base);font-weight:700;color:var(--blanc);position:relative;z-index:1;}
+.modal__close{color:rgba(255,255,255,.7);font-size:20px;cursor:pointer;position:relative;z-index:1;}
+.modal__close:hover{color:var(--blanc);}
+.modal__body{padding:var(--s6);}
+.mo-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s4);}
+.field{display:flex;flex-direction:column;gap:var(--s2);}
+.field.full{grid-column:1/-1;}
+.field label{font-size:var(--text-xs);font-weight:600;color:var(--bleu-nuit);letter-spacing:.04em;text-transform:uppercase;}
+.field input,.field select{padding:var(--s3) var(--s4);border:1.5px solid var(--gris-moyen);border-radius:var(--r-md);font-family:var(--font-corps);font-size:var(--text-sm);color:var(--noir-doux);outline:none;transition:all var(--transition-rapide);background:var(--blanc);}
+.field input:focus,.field select:focus{border-color:var(--bleu-vif);box-shadow:0 0 0 3px rgba(26,115,200,.15);}
+.modal__footer{padding:var(--s4) var(--s6);border-top:1px solid var(--gris-clair);display:flex;justify-content:flex-end;gap:var(--s3);align-items:center;background:var(--gris-clair);}
+.btn-danger-txt{background:none;border:none;color:#D9534F;font-size:var(--text-sm);font-weight:600;cursor:pointer;margin-right:auto;display:flex;align-items:center;gap:var(--s2);padding:var(--s2) var(--s3);border-radius:var(--r-md);}
+.btn-danger-txt:hover{background:#FDECEA;}
+.spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;display:inline-block;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.empty-row td{text-align:center;padding:var(--s8);color:var(--gris-texte);}
+</style>
+
+<h2 class="sr-only">Liste des équipements industriels – GMAO connectée Supabase</h2>
+
+<div class="page">
+  <div class="header">
+    <div class="header__left">
+      <div class="header__badge"><i class="ti ti-building-factory-2" aria-hidden="true"></i> GMAO · Inventaire</div>
+      <div class="header__titre">Équipements industriels</div>
+      <div class="header__sous">Données en temps réel — Supabase</div>
+    </div>
+    <div class="header__actions">
+      <button class="btn btn-fantome btn-sm" onclick="exportCSV()"><i class="ti ti-download" aria-hidden="true"></i> Exporter</button>
+      <button class="btn btn-primaire btn-sm" onclick="openAdd()"><i class="ti ti-plus" aria-hidden="true"></i> Ajouter</button>
+    </div>
+  </div>
+
+  <div id="err-banner"></div>
+  <div class="stats" id="stats">
+    <div class="stat"><div class="stat__icone stat__icone--bleu skeleton" style="width:40px;height:40px"></div><div class="skeleton" style="width:40px;height:28px;margin:8px 0 4px"></div><div class="skeleton" style="width:80px;height:12px"></div></div>
+    <div class="stat"><div class="stat__icone stat__icone--vert skeleton" style="width:40px;height:40px"></div><div class="skeleton" style="width:40px;height:28px;margin:8px 0 4px"></div><div class="skeleton" style="width:80px;height:12px"></div></div>
+    <div class="stat"><div class="stat__icone stat__icone--orange skeleton" style="width:40px;height:40px"></div><div class="skeleton" style="width:40px;height:28px;margin:8px 0 4px"></div><div class="skeleton" style="width:80px;height:12px"></div></div>
+    <div class="stat"><div class="stat__icone stat__icone--rouge skeleton" style="width:40px;height:40px"></div><div class="skeleton" style="width:40px;height:28px;margin:8px 0 4px"></div><div class="skeleton" style="width:80px;height:12px"></div></div>
+  </div>
+
+  <div class="toolbar">
+    <i class="ti ti-filter" style="color:var(--gris-texte)" aria-hidden="true"></i>
+    <input class="champ__input" type="text" id="search" placeholder="Rechercher…" oninput="applyFilters()" />
+    <select class="champ__select" id="fStatus" onchange="applyFilters()">
+      <option value="">Tous les statuts</option>
+      <option>Opérationnel</option><option>En maintenance</option><option>Alerte</option><option>Arrêté</option>
+    </select>
+    <select class="champ__select" id="fSite" onchange="applyFilters()"><option value="">Tous les sites</option></select>
+  </div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead><tr id="thead"></tr></thead>
+      <tbody id="tbody">
+        <tr><td colspan="7" style="padding:2rem;text-align:center"><span class="skeleton" style="display:inline-block;width:200px;height:14px"></span></td></tr>
+      </tbody>
+    </table>
+    <div class="pagination">
+      <span class="pagination__info" id="pag-info"></span>
+      <div style="display:flex;gap:8px">
+        <button class="page-btn" id="btn-prev" onclick="changePage(-1)"><i class="ti ti-chevron-left"></i></button>
+        <button class="page-btn" id="btn-next" onclick="changePage(1)"><i class="ti ti-chevron-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mo-wrap" id="mowrap">
+    <div class="modal">
+      <div class="modal__header">
+        <h2 id="mo-title">Ajouter un équipement</h2>
+        <button class="modal__close" onclick="closeModal()" aria-label="Fermer"><i class="ti ti-x"></i></button>
+      </div>
+      <div class="modal__body">
+        <div id="mo-err" style="display:none" class="alerte alerte--erreur"><i class="ti ti-alert-circle"></i><span id="mo-err-txt"></span></div>
+        <div class="mo-grid">
+          <div class="field full"><label>Nom de l'équipement</label><input type="text" id="f-name" placeholder="Ex : Compresseur d'air" /></div>
+          <div class="field"><label>Numéro de série</label><input type="text" id="f-serial" placeholder="SN-2024-0042" /></div>
+          <div class="field"><label>Fournisseur</label><input type="text" id="f-supplier" placeholder="Ex : Atlas Copco" /></div>
+          <div class="field full"><label>Emplacement / Site</label><input type="text" id="f-site" placeholder="Ex : Atelier B – Zone 3" /></div>
+          <div class="field"><label>Catégorie</label><input type="text" id="f-category" placeholder="Ex : Pneumatique" /></div>
+          <div class="field"><label>Statut</label>
+            <select id="f-status"><option>Opérationnel</option><option>En maintenance</option><option>Alerte</option><option>Arrêté</option></select>
+          </div>
+          <div class="field"><label>Date d'installation</label><input type="date" id="f-date" /></div>
+          <div class="field"><label>Prochaine maintenance</label><input type="date" id="f-next" /></div>
+        </div>
+      </div>
+      <div class="modal__footer">
+        <button class="btn-danger-txt" id="btn-del" onclick="deleteEquip()" style="display:none"><i class="ti ti-trash"></i> Supprimer</button>
+        <button class="btn btn-secondaire btn-sm" onclick="closeModal()">Annuler</button>
+        <button class="btn btn-primaire btn-sm" id="btn-save" onclick="saveEquip()"><i class="ti ti-check"></i> Enregistrer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+var SB_URL = 'https://yabkcdgdyavqfenjqqpy.supabase.co';
+var SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlhYmtjZGdkeWF2cWZlbmpxcXB5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgxMTQyNjMsImV4cCI6MjA5MzY5MDI2M30.4DC3Rmr_GLHegLFbB76ewJqmKFsszNnyOjcOK4EzpGs';
+
+var COLS=[
+  {key:'name',label:'Équipement',cls:'nm',w:'22%'},
+  {key:'serial',label:'N° série',cls:'sr',w:'14%'},
+  {key:'supplier',label:'Fournisseur',cls:'',w:'14%'},
+  {key:'site',label:'Emplacement',cls:'',w:'18%'},
+  {key:'category',label:'Catégorie',cls:'',w:'11%'},
+  {key:'status',label:'Statut',cls:'',w:'12%'},
+  {key:'date_install',label:'Installation',cls:'',w:'9%'},
+];
+
+var allData=[], filtered=[], sortKey='name', sortDir=1, page=1, PER=6, editId=null, saving=false;
+
+function sbFetch(path, opts){
+  return fetch(SB_URL+'/rest/v1/'+path, Object.assign({headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':'return=representation'}}, opts||{}));
+}
+
+async function loadData(){
+  try {
+    var r = await sbFetch('equipements?select=*&order=name.asc');
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    allData = await r.json();
+    applyFilters();
+    renderStats();
+    populateSites();
+  } catch(e){
+    showBanner('Erreur de chargement : '+e.message);
+  }
+}
+
+function showBanner(msg){
+  document.getElementById('err-banner').innerHTML='<div class="alerte alerte--erreur"><i class="ti ti-alert-circle"></i>'+msg+'</div>';
+}
+
+function tag(s){
+  var m={Opérationnel:'succes','En maintenance':'info',Alerte:'alerte',Arrêté:'erreur'};
+  var ic={Opérationnel:'ti-circle-check','En maintenance':'ti-tool',Alerte:'ti-alert-triangle',Arrêté:'ti-circle-x'};
+  return '<span class="tag tag--'+(m[s]||'info')+'"><i class="ti '+(ic[s]||'ti-circle')+'" aria-hidden="true"></i>'+s+'</span>';
+}
+
+function buildHead(){
+  document.getElementById('thead').innerHTML=COLS.map(function(c){
+    var s=sortKey===c.key;
+    return '<th style="width:'+c.w+'" onclick="sortBy(\''+c.key+'\')" class="'+(s?'sorted':'')+'">'+c.label+'<span class="sic">'+(s?(sortDir===1?'▲':'▼'):'↕')+'</span></th>';
+  }).join('');
+}
+
+function applyFilters(){
+  var q=(document.getElementById('search').value||'').toLowerCase();
+  var fs=document.getElementById('fStatus').value;
+  var fsite=document.getElementById('fSite').value;
+  filtered=allData.filter(function(d){
+    return (!q||['name','serial','supplier','site','category'].some(function(k){return (d[k]||'').toLowerCase().indexOf(q)>-1;}))
+      &&(!fs||d.status===fs)&&(!fsite||d.site===fsite);
+  });
+  sortData(); render();
+}
+
+function sortData(){
+  filtered.sort(function(a,b){
+    var av=(a[sortKey]||'').toString().toLowerCase(), bv=(b[sortKey]||'').toString().toLowerCase();
+    return av<bv?-sortDir:av>bv?sortDir:0;
+  });
+}
+
+function renderStats(){
+  var total=allData.length,ok=0,wa=0,st=0;
+  allData.forEach(function(d){if(d.status==='Opérationnel')ok++;else if(d.status==='Alerte')wa++;else if(d.status==='Arrêté')st++;});
+  var items=[
+    {ico:'ti-building-factory-2',cls:'bleu',n:total,lbl:'Total équipements'},
+    {ico:'ti-circle-check',cls:'vert',n:ok,lbl:'Opérationnels'},
+    {ico:'ti-alert-triangle',cls:'orange',n:wa,lbl:'En alerte'},
+    {ico:'ti-circle-x',cls:'rouge',n:st,lbl:'À l\'arrêt'},
+  ];
+  document.getElementById('stats').innerHTML=items.map(function(s){
+    return '<div class="stat"><div class="stat__icone stat__icone--'+s.cls+'"><i class="ti '+s.ico+'" aria-hidden="true"></i></div><div class="stat__nombre">'+s.n+'</div><div class="stat__label">'+s.lbl+'</div></div>';
+  }).join('');
+}
+
+function populateSites(){
+  var sites=[];
+  allData.forEach(function(d){if(d.site&&sites.indexOf(d.site)<0)sites.push(d.site);});
+  sites.sort();
+  var cur=document.getElementById('fSite').value;
+  document.getElementById('fSite').innerHTML='<option value="">Tous les sites</option>'+sites.map(function(s){return '<option'+(s===cur?' selected':'')+'>'+s+'</option>';}).join('');
+}
+
+function render(){
+  buildHead();
+  var total=filtered.length, pages=Math.max(1,Math.ceil(total/PER));
+  if(page>pages)page=pages;
+  var slice=filtered.slice((page-1)*PER,page*PER);
+  var tb=document.getElementById('tbody');
+  if(!slice.length){
+    tb.innerHTML='<tr class="empty-row"><td colspan="'+COLS.length+'"><i class="ti ti-mood-empty" style="font-size:24px;display:block;margin-bottom:8px" aria-hidden="true"></i>Aucun équipement trouvé</td></tr>';
+  } else {
+    tb.innerHTML=slice.map(function(row){
+      return '<tr onclick="openEdit('+row.id+')">'+COLS.map(function(c){
+        var v=row[c.key]||'—';
+        if(c.key==='status') v=tag(row[c.key]);
+        return '<td class="'+c.cls+'">'+v+'</td>';
+      }).join('')+'</tr>';
+    }).join('');
+  }
+  document.getElementById('pag-info').textContent=total?((page-1)*PER+1)+'–'+Math.min(page*PER,total)+' sur '+total+' équipements':'Aucun résultat';
+  document.getElementById('btn-prev').disabled=page<=1;
+  document.getElementById('btn-next').disabled=page>=pages;
+}
+
+function changePage(d){page+=d;render();}
+function sortBy(k){if(sortKey===k)sortDir*=-1;else{sortKey=k;sortDir=1;}sortData();render();}
+
+function clearForm(){
+  ['name','serial','supplier','site','category','date','next'].forEach(function(f){document.getElementById('f-'+f).value='';});
+  document.getElementById('f-status').value='Opérationnel';
+  document.getElementById('mo-err').style.display='none';
+}
+
+function openAdd(){
+  editId=null;
+  document.getElementById('mo-title').textContent='Ajouter un équipement';
+  document.getElementById('btn-del').style.display='none';
+  clearForm();
+  document.getElementById('mowrap').classList.add('open');
+  setTimeout(function(){document.getElementById('f-name').focus();},50);
+}
+
+function openEdit(id){
+  var eq=null;
+  for(var i=0;i<allData.length;i++){if(allData[i].id===id){eq=allData[i];break;}}
+  if(!eq)return;
+  editId=id;
+  document.getElementById('mo-title').textContent='Modifier l\'équipement';
+  document.getElementById('btn-del').style.display='';
+  document.getElementById('f-name').value=eq.name||'';
+  document.getElementById('f-serial').value=eq.serial||'';
+  document.getElementById('f-supplier').value=eq.supplier||'';
+  document.getElementById('f-site').value=eq.site||'';
+  document.getElementById('f-category').value=eq.category||'';
+  document.getElementById('f-status').value=eq.status||'Opérationnel';
+  document.getElementById('f-date').value=eq.date_install||'';
+  document.getElementById('f-next').value=eq.next_maintenance||'';
+  document.getElementById('mo-err').style.display='none';
+  document.getElementById('mowrap').classList.add('open');
+}
+
+function closeModal(){document.getElementById('mowrap').classList.remove('open');}
+
+async function saveEquip(){
+  if(saving)return;
+  var name=document.getElementById('f-name').value.trim();
+  if(!name){document.getElementById('f-name').focus();return;}
+  var payload={
+    name:name,serial:document.getElementById('f-serial').value.trim(),
+    supplier:document.getElementById('f-supplier').value.trim(),
+    site:document.getElementById('f-site').value.trim(),
+    category:document.getElementById('f-category').value.trim(),
+    status:document.getElementById('f-status').value,
+    date_install:document.getElementById('f-date').value||null,
+    next_maintenance:document.getElementById('f-next').value||null,
+  };
+  saving=true;
+  var btn=document.getElementById('btn-save');
+  btn.innerHTML='<span class="spinner"></span> Enregistrement…';
+  btn.disabled=true;
+  try {
+    var r;
+    if(editId!==null){
+      r=await sbFetch('equipements?id=eq.'+editId,{method:'PATCH',body:JSON.stringify(payload)});
+    } else {
+      r=await sbFetch('equipements',{method:'POST',body:JSON.stringify(payload)});
+    }
+    if(!r.ok){var e=await r.json();throw new Error(e.message||'Erreur serveur');}
+    closeModal();
+    await loadData();
+  } catch(e){
+    document.getElementById('mo-err-txt').textContent=e.message;
+    document.getElementById('mo-err').style.display='flex';
+  } finally {
+    saving=false;
+    btn.innerHTML='<i class="ti ti-check"></i> Enregistrer';
+    btn.disabled=false;
+  }
+}
+
+async function deleteEquip(){
+  if(editId===null||!confirm('Supprimer cet équipement ?'))return;
+  try {
+    var r=await sbFetch('equipements?id=eq.'+editId,{method:'DELETE'});
+    if(!r.ok)throw new Error('Erreur suppression');
+    closeModal();await loadData();
+  } catch(e){
+    document.getElementById('mo-err-txt').textContent=e.message;
+    document.getElementById('mo-err').style.display='flex';
+  }
+}
+
+function exportCSV(){
+  var header=COLS.map(function(c){return c.label;}).join(';');
+  var lines=filtered.map(function(r){return COLS.map(function(c){return '"'+(r[c.key]||'').toString().replace(/"/g,'""')+'"';}).join(';');});
+  var a=document.createElement('a');
+  a.href='data:text/csv;charset=utf-8,'+encodeURIComponent([header].concat(lines).join('\n'));
+  a.download='equipements_gmao.csv';a.click();
+}
+
+loadData();
+</script>
